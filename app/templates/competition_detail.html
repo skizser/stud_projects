@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ competition.name }}
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="jumbotron jumbotron3">
+        <div class="container p-3 p-md-5 m-md-3">
+            <h1 class="display-4 color-white">Информация о <br> соревновании: <b>{{ competition.name }}</b></h1>
+        <p>
+          <a href="/competition" class="btn btn-warning my-2">Посмотреть все соревнования >></a>
+        </p>
+        </div>
+</div>
+    <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Информация о соревновании:<br>  <b>{{ competition.name }}</b></h1><br>
+        <p>Место проведения: {{competition.place}}</p><br>
+        <p>Дата проведения: {{competition.placetime}}</p><br>
+        <hr>
+      </div>
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Занятое место</th>
+                <th scope="col">Жокей</th>
+                <th scope="col">Лошадь</th>
+                </tr>
+            </thead>
+            {% for el in id_global %}
+            <tbody>
+                <tr>
+                <th scope="row">{{ el.winner_place }}</th>
+                <td>{{ jockey[el.id_jockey-1].name }}</td>
+                <td>{{ horse[el.id_horse-1].name }}</td>
+
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+  </section>
+
+</main>
+{% endblock %}

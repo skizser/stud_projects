@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Жакеи
+{% endblock %}
+
+{% block body %}
+<main>
+
+<div class="jumbotron jumbotron4">
+        <div class="container p-3 p-md-5 m-md-3">
+          <h1 class="display-3 color-white">Жокеи</h1>
+          <p class="color-white">Все жокеи , которые участвуют в соревнованиях представлены ниже</p>
+          <a class="btn btn-warning my-2" href="#top" role="button">Посмотреть жокеев »</a>
+          <a class="btn btn-outline-warning my-2" href="/create-jockeys" role="button">Добавить нового жокея »</a>
+        </div>
+</div>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light"><a name="top" >Жокеи</a></h1><br>
+        <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Рейтинг</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+            {% if jockeys|length > 0 %}
+                 {% for el in jockeys %}
+                <tbody>
+                    <tr>
+                    <th scope="row">{{ el.id }}</th>
+                    <td>{{ el.name }}</td>
+                    <td>{{ el.rating }}</td>
+                    <td><a class="btn btn-warning my-2" href="/jockeys/{{ el.id }}" role="button">Детально</a></td>
+                    <td><a class="btn btn-dark my-2" href="/jockeys/{{ el.id }}/update" role="button">Редактировать</a></td>
+                    <td><a class="btn btn-danger my-2" href="/jockeys/{{ el.id }}/del" role="button">Удалить</a></td>
+
+                    </tr>
+                </tbody>
+                 {% endfor %}
+            {% else %}
+            <p>У нас нет жокеев, которые участвуют в гонке</p>
+            {% endif %}
+            </table>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

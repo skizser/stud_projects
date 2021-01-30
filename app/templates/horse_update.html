@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Обновление данных лошади
+{% endblock %}
+
+{% block body %}
+<main>
+<div class="jumbotron jumbotron2">
+        <div class="container p-3 p-md-5 m-md-3">
+          <h1 class="display-5 color-white">Редактирование данных <br>лошади</h1>
+        <p>
+          <a href="/horses" class="btn btn-warning my-2">Посмотреть всех лошадей</a>
+        </p>
+        </div>
+</div>
+      <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Обновление данных лошади</h1><br>
+            <form method="post">
+                <input type="text" name="name" id="name" class="form-control" value="{{ horse.name }}" placeholder="Введите кличку лошади"><br>
+                <input type="text" name="age" id="age" class="form-control"   value="{{ horse.age }}" placeholder="Введите возраст лошади"><br>
+                <p>
+                  <select class="custom-select" name='id_owner' id='id_owner'>
+                  {% for owner in owners %}
+                    <option value='{{owner.id}}'>{{ owner.name }}</option>
+                  {% endfor %}
+                  </select>
+                </p>
+                <input type="submit" class="btn btn-warning my-2" value="Обновить">
+            </form>
+           </div>
+    </div>
+  </section>
+
+</main>
+
+    {% endblock %}

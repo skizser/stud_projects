@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Обновление данных лошади
+{% endblock %}
+
+{% block body %}
+<main>
+<div class="jumbotron jumbotron2">
+        <div class="container p-3 p-md-5 m-md-3">
+          <h1 class="display-5 color-white">Редактирование данных <br>соревнования</h1>
+        <p>
+          <a href="/competition" class="btn btn-warning my-2">Посмотреть все соревнования</a>
+        </p>
+        </div>
+</div>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Редактирование соренования</h1><br>
+          <form method="post">
+            <p>Соревнование</p>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Введите название соренования"><br>
+            <input type="text" name="place" id="place" class="form-control" placeholder="Введите место проведения соренования"><br>
+            <input type="text" name="timeplace" id="timeplace" class="form-control" placeholder="Введите время проведения соренования"><br>
+            <p>Участники соревнования</p>
+            <table class="table py-5 text-center container">
+              <tr>
+                <th>Место</th>
+                <th>Жокей</th>
+                <th>Лошадь</th>
+              </tr>
+              {% for place in range(1, 7) %}
+              <tr>
+                <th>
+                  <p name="winner_place" id="winner_place"> {{ place }} </p>
+                </th>
+                <th>
+                  <p>
+                    <select class="custom-select" name='jockey_{{place}}' id='id_jockey_{{place}}'>
+                    {% for jockey in jockeys %}
+                      <option value='{{jockey.id}}'>{{ jockey.name }}</option>
+                    {% endfor %}
+                    </select>
+                  </p>
+                </th>
+                <th>
+                  <p>
+                    <select class="custom-select" name='horse_{{place}}' id='id_horse_{{place}}'>
+                    {% for horse in horses %}
+                      <option value='{{horse.id}}'>{{ horse.name }}</option>
+                    {% endfor %}
+                    </select>
+                  </p>
+                </th>
+              </tr>
+              {% endfor %}
+            </table>
+            <br>
+            <input type="submit" class="btn btn-warning my-2" value="Отправить">
+          </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+    {% endblock %}

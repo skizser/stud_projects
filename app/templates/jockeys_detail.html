@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ jockey.name }}
+{% endblock %}
+
+
+{% block body %}
+<main>
+
+<div class="jumbotron jumbotron4">
+        <div class="container p-3 p-md-5 m-md-3">
+          <h1 class="display-4 color-white">Все состязания <br> жокея: <b>{{ jockey.name }}</h1>
+          <a href="/jockeys" class="btn btn-warning my-2">Посмотреть всех жокеев</a>
+        </div>
+</div>
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Все состязания жокея: <b>{{ jockey.name }}</b></h1><br>
+
+        <div class="alert alert-info">
+              <p>Возраст: {{ jockey.age }}</p>
+              <br>
+              <p>Адрес: {{ jockey.address }}</p>
+              <br>
+              <p>Рейтинг: {{ jockey.rating }}</p>
+        </div>
+        <table class="table py-5 text-center container">
+          <tr>
+            <th>Занятое место</th>
+            <th>Лошадь</th>
+            <th>Соревнование</th>
+          </tr>
+          {% for place in competitionDetail %}
+          <tr>
+            <th>
+              <p> {{ place.winner_place }} </p>
+            </th>
+            <th>
+              <p>
+                {{ horses[(place.id_horse)-1].name}}
+              </p>
+            </th>
+            <th>
+              <p>
+                {{competition[(place.id_competition)-1].name}}
+              </p>
+            </th>
+          </tr>
+          {% endfor %}
+        </table>
+
+    </div>
+  </div>
+</section>
+
+
+</main>
+{% endblock %}

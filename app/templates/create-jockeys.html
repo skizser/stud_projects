@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Создание жокея
+{% endblock %}
+
+{% block body %}
+<main>
+<div class="jumbotron jumbotron2">
+        <div class="container p-3 p-md-5 m-md-3">
+          <h1 class="display-5 color-white">Добавление данных<br>жокея</h1>
+
+        <p>
+          <a href="/jockeys" class="btn btn-warning my-2">Посмотреть всех жокеев >></a>
+        </p>
+        </div>
+</div>
+      <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Добавление жокея</h1><br>
+            <form method="post">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Введите имя жокея"><br>
+                <input type="text" name="age" id="age" class="form-control" placeholder="Введите возраст жокея"><br>
+                <input type="text" name="address" id="address" class="form-control" placeholder="Введите адрес жокея"><br>
+                <input type="text" name="rating" id="rating" class="form-control" placeholder="Введите рейтинг жокея"><br>
+                <input type="submit" class="btn btn-warning my-2" value="Отправить">
+            </form>
+           </div>
+    </div>
+  </section>
+
+</main>
+
+    {% endblock %}
